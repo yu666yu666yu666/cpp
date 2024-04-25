@@ -50,11 +50,18 @@ int main()
     bool contains = name.find("no") != std::string::npos;
 
     {
-        std::unique_ptr<ced> m_ced(new ced());
-        std::unique_ptr<ced> n_ced = std::make_unique<ced>();//更安全
-         std::unique_ptr<ced> n_ced1 = n_ced;
-    }
+        std::shared_ptr<ced> p;
+        {
+            //unique低开销
+            std::unique_ptr<ced> m_ced(new ced());
+            std::unique_ptr<ced> n_ced = std::make_unique<ced>();//更安全
+            //std::unique_ptr<ced> n_ced1 = n_ced;  error,只能有一个
 
+            std::shared_ptr<ced> q = std::make_shared<ced>();//有引用计数系统的开销。不要用new
+            std::weak_ptr<ced> weake = q;//不增加计数
+            p = q;
+        }
+    }
     ce::x = 3;
     ce::y = 4;
     std::cout<< ce::x << ce::y;
