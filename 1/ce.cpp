@@ -2,6 +2,7 @@
 #include <string>
 #include <array>
 #include <memory>
+#include <utility>
 
 class ced{
     static int x,y;
@@ -41,6 +42,15 @@ int ce::x;
 int ce::y;
 
 void PrintString(const std::string& string);
+
+//std::pair
+static std::tuple<std::string,std::string,int> ParseShfader();//返回多个数据,(太繁琐),用结构体返回更好
+
+//模板，随用随创，即调用了才会创建
+template<typename T>//class和typename一样
+void Print(T value){
+    //
+}
 
 int main()
 {
