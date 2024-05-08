@@ -5,8 +5,8 @@ int main()
     int i;
     std::cout << "Hello world!"; // print Hello world! to console
     std::cout << i/3 <<   "   4";
-    return 0;
-}
+    
+
 
 
 
@@ -57,4 +57,29 @@ const函数参数被视为运行时常量（即使提供的参数是编译时常
 请注意，consteval 函数按值返回。虽然在运行时这样做可能效率低下（如果值是复制成本高昂的某种类型，例如 std：：string），但在编译时上下文中，这并不重要，因为对 consteval 函数的整个调用将简单地替换为计算的返回值。
 如果 constexpr 函数对常量和非常量上下文要求不同的行为，请使用 if (std::is_constant_evaluated()) 条件化行为。
 
+如果 std::string 没有足够的内存来存储字符串，它将使用一种称为动态内存分配的内存分配形式（在运行时）请求额外的内存。这种获取额外内存的能力是使其 std::string 如此灵活但也相对较慢的部分原因。
+当需要只读字符串时，尤其是对于函数参数时，首选 std::string_view 。
+当需要字符串符号常量时 constexpr std::string_view ，这是首选。
+需要注意的是，a std::string_view 在其整个生命周期中仍然依赖于初始值设定项。如果正在查看的字符串在仍在使用时被修改或销毁，则会导致意外或未定义的行为。
+remove_prefix() member 函数从视图左侧删除字符。remove_suffix() member 函数从视图右侧删除字符。
+与真正的窗帘不同，一旦 remove_prefix() 和 remove_suffix() 已经调用，重置视图的唯一方法是再次将源字符串重新分配给它。
+注意不要编写任何假定 a std::string_view 以 null 结尾的代码。
+
+
+
 */
+
+//如果用于 std::getline() 读取字符串，请使用 std::cin >> std::ws 输入操纵器忽略前导空格。这需要为每个 std::getline() 呼叫执行，因为 std::ws 不会在呼叫之间保留。
+
+
+    std::cout << "Now enter your name: ";
+    std::string name{};
+    std::getline(std::cin >> std::ws, name); // note: added std::ws here
+
+    
+//由于全局变量是全局命名空间的一部分，因此我们可以使用不带前缀的范围运算符 （：:) 来告诉编译器我们指的是全局变量而不是局部变量。
+
+
+
+}
+
