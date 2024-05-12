@@ -76,10 +76,12 @@ remove_prefix() member 函数从视图左侧删除字符。remove_suffix() membe
     std::string name{};
     std::getline(std::cin >> std::ws, name); // note: added std::ws here
 
-    
+
 //由于全局变量是全局命名空间的一部分，因此我们可以使用不带前缀的范围运算符 （：:) 来告诉编译器我们指的是全局变量而不是局部变量。
+/*
+函数默认具有外部链接。可以使用 static 关键字将它们设为内部。
 
-
+*/
 
 }
 
