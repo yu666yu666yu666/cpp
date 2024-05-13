@@ -81,6 +81,12 @@ remove_prefix() member 函数从视图左侧删除字符。remove_suffix() membe
 /*
 函数默认具有外部链接。可以使用 static 关键字将它们设为内部。
 
+std::exit() 函数不会清理当前函数中的局部变量，也不会清理调用堆栈。
+std::quick_exit() 正常终止程序，但不清理静态对象，并且可能会也可能不会执行其他类型的清理。 std::at_quick_exit() 执行与 std::atexit() 以 std::quick_exit() . 结尾的程序相同的角色。
+
+用于 std::random_device 设定 PRNG 的种子
+
+
 */
 
 }
