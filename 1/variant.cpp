@@ -1,5 +1,6 @@
 #include <iostream>
 #include <variant>
+//不会动态内存分配，性能更好
 
 enum class ErrorCode{
     None = 0,NotFound = 1,NoAccess = 2
