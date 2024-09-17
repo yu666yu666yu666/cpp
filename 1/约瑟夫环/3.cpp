@@ -22,7 +22,6 @@ std::vector<int> josephus(int n, int m) {
 int main() {
     int n, k;
     std::cin >> n >> k;
-
     std::vector<int> specified(k);
     for (int i = 0; i < k; ++i) {
         std::cin >> specified[i];
