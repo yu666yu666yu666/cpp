@@ -17,7 +17,7 @@ int main() {
     std::stack<char> a;
     std::cin >> string1;
 
-    string2.resize(string1.length()); // 为 string2 分配大小
+    string2.resize(string1.length());
     int i = 0, j = 0;
 
     while (string1[i] != '#') {
@@ -27,20 +27,20 @@ int main() {
             case '*':
             case '/':
                 while (!a.empty() && isok(string1[i], a.top())) {
-                    string2[j++] = a.top(); // 将栈顶元素加入输出字符串
+                    string2[j++] = a.top(); 
                     a.pop();
                 }
-                a.push(string1[i]); // 将当前运算符入栈
+                a.push(string1[i]); 
                 break;
             case '(':
                 a.push('(');
                 break;
             case ')':
                 while (!a.empty() && a.top() != '(') {
-                    string2[j++] = a.top(); // 将栈顶元素加入输出字符串
+                    string2[j++] = a.top();
                     a.pop();
                 }
-                a.pop(); // 弹出 '('
+                a.pop(); 
                 break;
             default:
                 string2[j++] = string1[i];
@@ -49,11 +49,11 @@ int main() {
         i++;
     }
 
-    while (!a.empty()) { // 弹出所有剩余的运算符
+    while (!a.empty()) {
         string2[j++] = a.top();
         a.pop();
     }
 
-    string2.resize(j); // 调整 string2 的大小
+    string2.resize(j);
     std::cout << string2;
 }
