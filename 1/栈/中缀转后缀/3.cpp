@@ -24,6 +24,7 @@ double jisuan(const std::string &string2) {
     while (iss >> token) {
         if (isdigit(token[0])) {
             // 将数字作为 double 入栈
+            
             a.push(std::stod(token)); // 使用 std::stod 转换为 double
         } else {
             double x = a.top(); a.pop();
