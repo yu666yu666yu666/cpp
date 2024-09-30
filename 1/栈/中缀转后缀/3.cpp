@@ -14,7 +14,6 @@ bool isok(char a, char b) {
     return false;
 }
 
-
 double jisuan(const std::string &string2) {
     std::stack<double> a;
     std::istringstream iss(string2);
